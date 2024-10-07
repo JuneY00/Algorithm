@@ -39,7 +39,7 @@ class Solution {
             curr.next = gcdNode;
 
             // Move to the next pair
-            curr = curr.next.next;
+            curr = gcdNode.next;
         }
         
         return head;
