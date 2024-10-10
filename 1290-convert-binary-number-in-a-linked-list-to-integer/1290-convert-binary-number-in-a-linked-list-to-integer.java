@@ -10,16 +10,12 @@
  */
 class Solution {
     public int getDecimalValue(ListNode head) {
-        String binary = "";
-
         
-        while(head!=null){
-            binary += Integer.toString(head.val);
+        int num = 0;
+        while(head != null){
+            num = (num << 1) | head.val;
             head = head.next;
         }
-        
-        System.out.println(binary);
-
-        return Integer.parseInt(binary, 2);
+        return num; 
     }
 }
