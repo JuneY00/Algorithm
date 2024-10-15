@@ -1,32 +1,26 @@
 class Solution {
     public int longestPalindrome(String s) {
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-        boolean oddFlag = false;
+        
+        int[] charCount = new int[128]; // array to store frequency of characters 
         int maxLength = 0; 
+        boolean hasOdd = false; // check if there's a odd number 
         
-        if(s.length() == 1){
-            return 1;
-        }
-        
-        // initialize map with key(character), value(character's frequency)
+        // count the frequency of each character 
         for(char c: s.toCharArray()){
-            map.put(c,map.getOrDefault(c,0)+1);
+            charCount[c]++;
         }
         
-        for(char key : map.keySet()){
-            int value = map.get(key);
-            
-            // Longest Palindrome == max even number and max odd number 
-            // if value is odd and odd is never occered
-            if(value%2 != 0 && !oddFlag){
-                maxLength +=value;
-                oddFlag = true;
-            }else if(value%2 != 0 && oddFlag){
-                maxLength += (value-1);
-            }else{
-                maxLength += value;
+        for(int count: charCount){
+            maxLength += count/2*2; // add only even number part of the count 
+            if(count%2 ==1 ){
+                hasOdd = true;
             }
         }
+        
+        if(hasOdd){
+            maxLength++;
+        }
+        
         return maxLength;
         
     }
