@@ -1,6 +1,43 @@
 class Solution {
     public boolean canThreePartsEqualSum(int[] arr) {
 
+        int totalSum = 0;
+        
+        for(int num:arr){
+            totalSum += num;
+        }
+        
+        if(totalSum%3 !=0){
+            return false;
+        }
+        
+        int targetSum = totalSum/3;
+        int currSum = 0;
+        int partsFound = 0;
+        
+        System.out.println(targetSum);
+        
+        for(int num : arr){
+            currSum += num;
+            
+            if(currSum == targetSum){
+                partsFound++;
+                currSum = 0;
+            }
+            
+            if(partsFound == 3){
+                return true;
+            }
+        }
+        
+        return false;
+    }
+}
+
+/*
+class Solution {
+    public boolean canThreePartsEqualSum(int[] arr) {
+
         int[] arrSum = new int[arr.length];
         arrSum[0] = arr[0];
         
@@ -24,3 +61,4 @@ class Solution {
         return false;
     }
 }
+*/
