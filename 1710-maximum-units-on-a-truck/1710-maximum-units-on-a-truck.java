@@ -11,8 +11,7 @@ class Solution {
                 System.out.println(boxTypes[i][0]);
 
                 if(truckSize >= boxTypes[i][0] ){
-                    int size =  boxTypes[i][0];
-                    result += size*boxTypes[i][1];
+                    result +=  boxTypes[i][0]*boxTypes[i][1];
                     truckSize -= boxTypes[i][0];
                     
                 }else{
