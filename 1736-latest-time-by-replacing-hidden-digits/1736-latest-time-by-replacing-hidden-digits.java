@@ -1,36 +1,34 @@
 class Solution {
     public String maximumTime(String time) {
     
-        char a = time.charAt(0);    // if b is 0-3 then, 2 is max, else 1 is max 
-        char b = time.charAt(1);  // if a is 2 then, 3 is max, else 9 is max 
-        char c = time.charAt(3); // max is always 5 
-        char d = time.charAt(4); // max is always 9 
-        String result = "";
+        StringBuilder result = new StringBuilder(time);
         
-        if(a == '?'){
-            if(b =='?' || b == '0' || b == '1' || b == '2' || b == '3'){
-                a = '2';
-            }else{
-                a = '1';
-            }
+        // Determine the first character
+        // if it is '?', decide based on the second character 
+        
+        if(result.charAt(0) == '?'){
+            // if result[1] is 0-3, then the maximum value for result[0] is '2';
+            // otherwise, it is '1' 
+            result.setCharAt(0, (result.charAt(1) == '?' || result.charAt(1) <='3') ? '2' : '1');
         }
         
-        if(b == '?'){
-            if(a == '?' || a =='2'){
-                b = '3';
-            }else{
-                b = '9';
-            }
+        // Determine the second character 
+        // if it is '?', decide based on the first character 
+
+        if(result.charAt(1) == '?'){
+            // if result[0] is 2, then the maximum value for result[1] is '3';
+            // otherwise, it is '9' 
+            result.setCharAt(1, (result.charAt(0) == '?' || result.charAt(0) =='2') ? '3' : '9');
         }
         
-        if(c == '?'){
-            c = '5';
+        if(result.charAt(3) == '?'){
+            result.setCharAt(3, '5');    
         }
         
-        if(d == '?'){
-            d ='9';
+        if(result.charAt(4) == '?'){
+            result.setCharAt(4,'9');
         }
         
-        return "" + a + b + ":" + c + d;
+        return result.toString();
     }
 }
