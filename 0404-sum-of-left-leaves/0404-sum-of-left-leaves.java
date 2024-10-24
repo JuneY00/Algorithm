@@ -15,6 +15,12 @@
  */
 
 // class Solution {
+
+        /*
+            Using stack:
+                - Time Complexity : O(N)
+                - Space Complexity : O(H)
+        */
 //     public int sumOfLeftLeaves(TreeNode root) {
 
 //         if(root == null){
@@ -53,8 +59,13 @@
 // }
 
 
-
 class Solution {
+    /*
+        Using recursive way 
+            - Time Complexity : O(N)
+            - Space Complexity : O(H)
+    */
+    
     private int treeRecursive(TreeNode root, boolean left){
         if(root == null){
             return 0;
