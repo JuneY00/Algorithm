@@ -13,31 +13,62 @@
  *     }
  * }
  */
+
+
+
+
 class Solution {
+    private boolean isMirror(TreeNode a, TreeNode b){
+        if(a==null && b==null){
+            return true;
+        }else if(a == null || b == null){
+            return false;
+        }else{
+            return a.val == b.val && isMirror(a.left, b.right) && isMirror(a.right, b.left);
+        }        
+    
+    }
     public boolean isSymmetric(TreeNode root) {
-        if(root==null){
+        // check if root.left tree is same with root.right tree
+        if(root == null){
             return true;
         }
         
         return isMirror(root.left, root.right);
-    }
         
-    public boolean isMirror(TreeNode node1, TreeNode node2){
-        if(node1 == null && node2==null){
-            return true;
-        }
-        else if(node1 == null || node2 == null){
-            return false;
-        }
-        else {
-            return (
-                node1.val == node2.val &&
-                isMirror(node1.left, node2.right) &&
-                isMirror(node1.right, node2.left)
-            );
-        }
+
     }
 }
+    
+
+    
+
+
+// class Solution {
+//     public boolean isSymmetric(TreeNode root) {
+//         if(root==null){
+//             return true;
+//         }
+        
+//         return isMirror(root.left, root.right);
+//     }
+        
+//     public boolean isMirror(TreeNode node1, TreeNode node2){
+//         if(node1 == null && node2==null){
+//             return true;
+//         }
+//         else if(node1 == null || node2 == null){
+//             return false;
+//         }
+//         else {
+//             return (
+//                 node1.val == node2.val &&
+//                 isMirror(node1.left, node2.right) &&
+//                 isMirror(node1.right, node2.left)
+//             );
+//         }
+//     }
+// }
     
 
     
