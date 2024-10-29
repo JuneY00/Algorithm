@@ -17,8 +17,8 @@
 class Solution {
     public List<Double> averageOfLevels(TreeNode root) {
         
-        Queue<TreeNode> q = new LinkedList<>();
-        List<Double> l = new ArrayList<>();
+        Queue<TreeNode> q = new ArrayDeque<>();
+        List<Double> averages = new ArrayList<>();
         q.add(root);
         
         while(!q.isEmpty()){
@@ -27,8 +27,7 @@ class Solution {
 
             for(int i = 0; i < size; i++){
                 TreeNode node = q.poll();
-                System.out.println(node.val);
-                all += Double.valueOf(node.val);
+                all += node.val;
 
                 if(node.left != null){
                     q.add(node.left);                
@@ -40,10 +39,10 @@ class Solution {
     
             }
            
-            l.add(all / size);
+            averages.add(all / size);
            
         }
         
-        return l;
+        return averages;
     }
 }
