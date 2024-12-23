@@ -1,36 +1,32 @@
 class Solution {
     public boolean isPalindrome(String s) {
         
-        if(s.isEmpty()){
-            return false;
-        }
-        
+        // use two pointers (start, end)
         int start = 0;
         int end = s.length()-1;
         
+        
         while(start <= end){
-            char currStart = s.charAt(start);
-            char currEnd = s.charAt(end);
+            // convert letters into lowercase 
+            char currStart = Character.toLowerCase(s.charAt(start));
+            char currEnd = Character.toLowerCase(s.charAt(end));
             
+                    
             if(!Character.isLetterOrDigit(currStart)){
                 start++;
             }else if(!Character.isLetterOrDigit(currEnd)){
-                end--;
+                end--; 
             }else{
-                if(Character.toLowerCase(currStart) != Character.toLowerCase(currEnd)){
-                    System.out.println(currStart+" "+ currEnd);
+            
+                if(currStart != currEnd){
                     return false;
                 }else{
                     start++;
                     end--;
                 }
-           }
-
+            }
         }
         
-        return true;
+        return true; 
     }
-    
 }
-
-
