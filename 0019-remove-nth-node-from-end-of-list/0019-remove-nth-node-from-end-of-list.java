@@ -8,6 +8,9 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
+
+
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if(head == null || head.next == null){
@@ -30,9 +33,6 @@ class Solution {
         
         for(int i = 0; i < size; i++){
             if(i == size-n){
-                System.out.println(current.val);
-                System.out.println(i);
-                System.out.println(size);
                 current.next = current.next.next;
                 break;
             }    
