@@ -26,6 +26,7 @@ class Solution {
                 
                 i--;
             }
+            // If nums[i] is 1, do nothing and just move to the next index 
         }
     }
     
