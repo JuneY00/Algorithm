@@ -8,7 +8,7 @@ class Solution {
                 continue;
             }
             
-            int direction = nums[i];
+            int direction = nums[i]; // current direction
             int slow = i;
             int fast = i; 
             
@@ -16,22 +16,15 @@ class Solution {
                 slow = nextStep(nums, slow, direction);
                 fast = nextStep(nums, fast, direction);
                 
-                if(fast == -1){
-                    break;
+                if(fast != -1){
+                    fast = nextStep(nums, fast, direction);
                 }
-
-                fast = nextStep(nums, fast, direction);
                 
+                // if any pointer is invalid or the direction changes, break 
                 if(slow == -1 || fast == -1){
                     break;
                 }
-                System.out.println(slow + " "+ fast +" "+i); 
-
-                // if the direction is opposite, it's not a cycle 
-                if(nums[slow]*direction <= 0 || nums[fast]*direction <= 0){
-                    break;
-                }
-                
+                                
                 // if slow pointer equals fast pointer, a cycle is detected 
                 if(slow==fast){
                     // if the cycle length is 1, it's not a valid cycle 
@@ -50,14 +43,14 @@ class Solution {
                 curr = next_idx;
             }                    
         }
-        return false;         
+        return false; // no cycle found in the entire array
     }
     
     private int nextStep(int[] nums, int currIdx, int direction){
         int n = nums.length;
         int idx = ((nums[currIdx] + currIdx) % n + n ) % n;
-        
-        // if next step is different direction or same index with current index, return -1 
+
+        // if the direction changes or the pointer doesn't move, return -1 
         if(direction*nums[idx] <= 0 || idx == currIdx){
             return -1;
         }
